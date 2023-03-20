@@ -2,10 +2,21 @@
 {% block title%}Home{% endblock %}
 
 {%block content%}
+<h1 align="center" class="text-light m-5">Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+        {{ note.data }}
+        <button type="button" class="btn btn-danger" onClick="deleteNote({{ note.id }})">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </li>
+    {% endfor %}
+</ul>
 <form action="" method="post">
-    <textarea name="note" id="note" cols="30" rows="10" class="form-control"></textarea>
+    <textarea name="note" id="note" cols="10" rows="5" class="form-control mt-5"></textarea>
     <div align="center">
-        <button type="submit" class="btn btn-primary">ADD Notes</button>
+        <button type="submit" class="btn btn-primary mt-3">ADD Note</button>
     </div>
 </form>
 {%endblock%}
